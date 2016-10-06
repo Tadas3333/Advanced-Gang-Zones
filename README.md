@@ -1,6 +1,9 @@
 # Advanced-Gang-Zones
 Draw numbers and borders on the map.
 
+# Limitations
+SA:MP Limit for gang zones is 1024. Numbers can take up to 10 gang zones to create and 4 for borders.<br>
+
 # Functions
 > CreateZone(Float:MinX, Float:MinY, Float:MaxX, Float:MaxY)
 
