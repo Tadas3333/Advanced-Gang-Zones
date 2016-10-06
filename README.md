@@ -45,7 +45,7 @@ Destroys borders.<br>
 **Returns (0 - a gang zone does not exist or borders were not created before, 1 - successful)**
 
 
-# How to use it
+# An example
 
 > public OnGameModeInit()
 
