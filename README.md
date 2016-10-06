@@ -50,9 +50,11 @@ Destroys borders.<br>
 
 # An example
 
+new zone;
+
 > public OnGameModeInit()
 
-new zone = CreateZone(1795.871093, 1264.255004, 2035.871093, 1472.255004);<br>
+zone = CreateZone(1795.871093, 1264.255004, 2035.871093, 1472.255004);<br>
 CreateZoneNumber(zone,69);<br>
 CreateZoneBorders(zone);
 <br><br>
