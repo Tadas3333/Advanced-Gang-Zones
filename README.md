@@ -1,5 +1,5 @@
 # Advanced-Gang-Zones
-Draw numbers and borders on the map.
+Draw numbers and borders on the map. This is an updated version of my old project beaZone.inc
 
 # Limitations
 SA:MP Limit for gang zones is 1024. Numbers can take up to 10 gang zones to create and 4 for borders.<br>
