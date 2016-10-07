@@ -1,6 +1,6 @@
 /*
         *****************
-        Advanced Gang Zones v2.2
+        Advanced Gang Zones v2.2.1
         by beijind.
         *****************
 */
@@ -529,7 +529,7 @@ stock agz_GangZoneCreateFirstNumber(gzid,gznum,Float:centposx,Float:centposy,Flo
 	  case 0:
 	  {
 		new Float:gztk = LETTER_STROKE*numsize;
-		new Float:gsdisx = 15.0*numsize*LETTER_XSQUASH;
+		new Float:gsdisx = 20.0*numsize*LETTER_XSQUASH;
 		new Float:gsdisy = 20.0*numsize;
         zGangZones[gzid][npart][0] = GangZoneCreate(centposx-gsdisx-gztk,centposy-gsdisy-gztk,centposx+gsdisx+gztk,centposy-gsdisy+gztk); // Down of 0
 		zGangZones[gzid][npart][1] = GangZoneCreate(centposx-gsdisx-gztk,centposy+gsdisy+gztk,centposx+gsdisx+gztk,centposy+gsdisy-gztk); // Up of 0
@@ -539,7 +539,7 @@ stock agz_GangZoneCreateFirstNumber(gzid,gznum,Float:centposx,Float:centposy,Flo
 	  case 1:
 	  {
 		new Float:gztk = LETTER_STROKE*numsize;
-		new Float:gsdisy = 25.0*numsize;
+		new Float:gsdisy = 20.0*numsize;
 		zGangZones[gzid][npart][0] = GangZoneCreate(centposx-gztk,centposy-gsdisy-gztk,centposx+gztk,centposy+gsdisy+gztk);
 	  }
 	  case 2:
@@ -636,7 +636,7 @@ stock agz_GangZoneCreateSecondNumber(gzid,gznum,Float:centposx,Float:centposy,Fl
 	  case 0:
 	  {
 		new Float:gztk = LETTER_STROKE*numsize;
-		new Float:gsdisx = 15.0*numsize*LETTER_XSQUASH;
+		new Float:gsdisx = 20.0*numsize*LETTER_XSQUASH;
 		new Float:gsdisy = 20.0*numsize;
         zGangZones[gzid][npart2][0] = GangZoneCreate(centposx-gsdisx-gztk,centposy-gsdisy-gztk,centposx+gsdisx+gztk,centposy-gsdisy+gztk); // Down of 0
 		zGangZones[gzid][npart2][1] = GangZoneCreate(centposx-gsdisx-gztk,centposy+gsdisy+gztk,centposx+gsdisx+gztk,centposy+gsdisy-gztk); // Up of 0
@@ -646,7 +646,7 @@ stock agz_GangZoneCreateSecondNumber(gzid,gznum,Float:centposx,Float:centposy,Fl
 	  case 1:
 	  {
 		new Float:gztk = LETTER_STROKE*numsize;
-		new Float:gsdisy = 25.0*numsize;
+		new Float:gsdisy = 20.0*numsize;
 		zGangZones[gzid][npart2][0] = GangZoneCreate(centposx-gztk,centposy-gsdisy-gztk,centposx+gztk,centposy+gsdisy+gztk);
 	  }
 	  case 2:
