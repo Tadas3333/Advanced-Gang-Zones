@@ -19,17 +19,19 @@ Creates a gang zone.<br>
 Destroys a gang zone.<br>
 **Returns (0 - a gang zone does not exist, 1 - successful)**
 <br><br>
-> ShowZoneForPlayer(playerid,zoneid,color)
+> ShowZoneForPlayer(playerid,zoneid,color,ncolor = ZCOLOR_NUMBER,bcolor = ZCOLOR_BORDER)
 
 Show a gangzone for a player. (Including a number and borders)<br>
-**Returns (0 - a gang zone does not exist, 1 - successful)**
+**Returns (0 - a gang zone does not exist, 1 - successful)**<br>
+**ncolor and bcolor arguments are optional**
 <br><br>
-> ShowZoneForAll(zoneid,color)
+> ShowZoneForAll(zoneid,color,ncolor = ZCOLOR_NUMBER,bcolor = ZCOLOR_BORDER)
 
 Show a gangzone for all players. (Including a number and borders)<br>
-**Returns (0 - a gang zone does not exist, 1 - successful)**
+**Returns (0 - a gang zone does not exist, 1 - successful)**<br>
+**ncolor and bcolor arguments are optional**
 <br><br>
-> CreateZoneNumber(zoneid,number,Float:numsize = 1.0)
+> CreateZoneNumber(zoneid,number,Float:numsize = 0.7)
 
 Attach a number to a gang zone.<br>
 A gang zone must be shown again to players in order to display a number.<br>
