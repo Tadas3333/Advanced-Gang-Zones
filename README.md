@@ -1,5 +1,5 @@
 # Advanced-Gang-Zones
-Draw numbers and borders on the map. This is an updated version of my old project beaZone.inc
+Draw numbers and borders on the map. This is an updated version of my old project beaZone.inc<br>
 SA:MP Forum Topic Link: http://forum.sa-mp.com/showthread.php?t=618475
 
 # Limitations
