@@ -80,21 +80,6 @@ Destroys borders.<br>
 > **Added in 2.1** - ZoneNumberStopFlashForAll(zoneid)
 
 
-# An example
-
-new zone;
-
-> public OnGameModeInit()
-
-zone = CreateZone(1795.871093, 1264.255004, 2035.871093, 1472.255004);<br>
-CreateZoneNumber(zone,69);<br>
-CreateZoneBorders(zone);
-<br><br>
-> public OnPlayerConnect(playerid)
-
-ShowZoneForPlayer(playerid,zone,0xFF000070);
-
-
 
 
 
