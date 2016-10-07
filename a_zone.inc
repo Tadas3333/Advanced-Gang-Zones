@@ -1,6 +1,6 @@
 /*
         *****************
-        Advanced Gang Zones v2
+        Advanced Gang Zones v2.1
         by beijind.
         *****************
 */
@@ -8,8 +8,8 @@
 #include <a_samp>
 
 #define NUMDIS 40.0
-#define ZCOLOR_NUMBER 0x00000080
-#define ZCOLOR_BORDER 0x00000080
+#define ZCOLOR_NUMBER 0x111111DD         // Color for numbers.
+#define ZCOLOR_BORDER 0x111111DD         // Color for borders.
 
 enum zoneInfo
 {
@@ -121,6 +121,76 @@ stock ShowZoneForPlayer(playerid,zoneid,color)
     return 1;
 }
 
+// Hides a gang zone for all.
+stock HideZoneForAll(zoneid)
+{
+	if(!zGangZones[zoneid][zExists])return 0;
+
+	//
+	GangZoneHideForAll(zGangZones[zoneid][zMainID]);
+
+	//
+	if(zGangZones[zoneid][zIsUsingNumbers])
+	{
+       for(new nump; nump<5; nump++)
+	   {
+	      if(zGangZones[zoneid][npart][nump] != -1)
+		  {
+		     GangZoneHideForAll(zGangZones[zoneid][npart][nump]);
+		  }
+		  if(zGangZones[zoneid][npart2][nump] != -1)
+		  {
+		     GangZoneHideForAll(zGangZones[zoneid][npart2][nump]);
+		  }
+	   }
+	}
+
+	//
+	if(zGangZones[zoneid][zIsUsingBorders])
+	{
+       GangZoneHideForAll(zGangZones[zoneid][border][0]);
+	   GangZoneHideForAll(zGangZones[zoneid][border][1]);
+       GangZoneHideForAll(zGangZones[zoneid][border][2]);
+	   GangZoneHideForAll(zGangZones[zoneid][border][3]);
+    }
+    return 1;
+}
+
+// Hides a gang zone for a single player.
+stock HideZoneForPlayer(playerid,zoneid)
+{
+	if(!zGangZones[zoneid][zExists])return 0;
+		
+	//
+	GangZoneHideForPlayer(playerid,zGangZones[zoneid][zMainID]);
+
+	//
+	if(zGangZones[zoneid][zIsUsingNumbers])
+	{
+       for(new nump; nump<5; nump++)
+	   {
+	      if(zGangZones[zoneid][npart][nump] != -1)
+		  {
+		     GangZoneHideForPlayer(playerid,zGangZones[zoneid][npart][nump]);
+		  }
+		  if(zGangZones[zoneid][npart2][nump] != -1)
+		  {
+		     GangZoneHideForPlayer(playerid,zGangZones[zoneid][npart2][nump]);
+		  }
+	   }
+	}
+
+	//
+	if(zGangZones[zoneid][zIsUsingBorders])
+	{
+       GangZoneHideForPlayer(playerid,zGangZones[zoneid][border][0]);
+	   GangZoneHideForPlayer(playerid,zGangZones[zoneid][border][1]);
+       GangZoneHideForPlayer(playerid,zGangZones[zoneid][border][2]);
+	   GangZoneHideForPlayer(playerid,zGangZones[zoneid][border][3]);
+    }
+    return 1;
+}
+
 // Creates a gang zone.
 stock CreateZone(Float:gzMinX, Float:gzMinY, Float:gzMaxX, Float:gzMaxY)
 {
@@ -179,6 +249,7 @@ stock DestroyZone(zoneid)
 stock CreateZoneNumber(zoneid,gznumber,Float:numsize = 1.0)
 {
 	if(!zGangZones[zoneid][zExists])return 0;
+	if(zGangZones[zoneid][zIsUsingNumbers])return 0;
 	if(numsize <= 0.0)return 0;
 	
 	//
@@ -238,6 +309,7 @@ stock DestroyZoneNumber(zoneid)
 stock CreateZoneBorders(zoneid)
 {
 	if(!zGangZones[zoneid][zExists])return 0;
+	if(zGangZones[zoneid][zIsUsingBorders])return 0;
 
 	//
     new Float:gzMinX = zGangZones[zoneid][zPosCords][0];
@@ -267,6 +339,182 @@ stock DestroyZoneBorders(zoneid)
 	zGangZones[zoneid][zIsUsingBorders] = false;
 	return 1;
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Make a gang zone flash for player.
+stock ZoneFlashForPlayer(playerid,zoneid,color)
+{
+    if(!zGangZones[zoneid][zExists])return 0;
+	
+	GangZoneFlashForPlayer(playerid,zGangZones[zoneid][zMainID],color);
+    return 1;
+}
+
+// Make a gang zone stop flash for player.
+stock ZoneStopFlashForPlayer(playerid,zoneid)
+{
+    if(!zGangZones[zoneid][zExists])return 0;
+	
+	GangZoneStopFlashForPlayer(playerid,zGangZones[zoneid][zMainID]);
+    return 1;
+}
+
+// Make a gang zone flash for all.
+stock ZoneFlashForAll(zoneid,color)
+{
+    if(!zGangZones[zoneid][zExists])return 0;
+	
+	GangZoneFlashForAll(zGangZones[zoneid][zMainID],color);
+    return 1;
+}
+
+// Make a gang zone stop flash for all.
+stock ZoneStopFlashForAll(zoneid)
+{
+    if(!zGangZones[zoneid][zExists])return 0;
+	
+	GangZoneStopFlashForAll(zGangZones[zoneid][zMainID]);
+    return 1;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Make borders flash for player.
+stock ZoneBordersFlashForPlayer(playerid,zoneid,color)
+{
+    if(!zGangZones[zoneid][zExists])return 0;
+	if(!zGangZones[zoneid][zIsUsingBorders])return 0;
+	
+	GangZoneFlashForPlayer(playerid,zGangZones[zoneid][border][0],color);
+	GangZoneFlashForPlayer(playerid,zGangZones[zoneid][border][1],color);
+    GangZoneFlashForPlayer(playerid,zGangZones[zoneid][border][2],color);
+	GangZoneFlashForPlayer(playerid,zGangZones[zoneid][border][3],color);
+    return 1;
+}
+
+// Make borders flash for player.
+stock ZoneBordersStopFlashForPlayer(playerid,zoneid)
+{
+    if(!zGangZones[zoneid][zExists])return 0;
+	if(!zGangZones[zoneid][zIsUsingBorders])return 0;
+	
+	GangZoneStopFlashForPlayer(playerid,zGangZones[zoneid][border][0]);
+	GangZoneStopFlashForPlayer(playerid,zGangZones[zoneid][border][1]);
+    GangZoneStopFlashForPlayer(playerid,zGangZones[zoneid][border][2]);
+	GangZoneStopFlashForPlayer(playerid,zGangZones[zoneid][border][3]);
+    return 1;
+}
+
+// Make borders flash for all.
+stock ZoneBordersFlashForAll(zoneid,color)
+{
+    if(!zGangZones[zoneid][zExists])return 0;
+	if(!zGangZones[zoneid][zIsUsingBorders])return 0;
+	
+	GangZoneFlashForAll(zGangZones[zoneid][border][0],color);
+	GangZoneFlashForAll(zGangZones[zoneid][border][1],color);
+    GangZoneFlashForAll(zGangZones[zoneid][border][2],color);
+	GangZoneFlashForAll(zGangZones[zoneid][border][3],color);
+    return 1;
+}
+
+// Make borders stop flash for all.
+stock ZoneBordersStopFlashForAll(zoneid)
+{
+    if(!zGangZones[zoneid][zExists])return 0;
+	if(!zGangZones[zoneid][zIsUsingBorders])return 0;
+	
+	GangZoneStopFlashForAll(zGangZones[zoneid][border][0]);
+	GangZoneStopFlashForAll(zGangZones[zoneid][border][1]);
+    GangZoneStopFlashForAll(zGangZones[zoneid][border][2]);
+	GangZoneStopFlashForAll(zGangZones[zoneid][border][3]);
+    return 1;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Make a number flash for player.
+stock ZoneNumberFlashForPlayer(playerid,zoneid,color)
+{
+    if(!zGangZones[zoneid][zExists])return 0;
+	if(!zGangZones[zoneid][zIsUsingNumbers])return 0;
+	
+	for(new nump; nump<5; nump++)
+	{
+	      if(zGangZones[zoneid][npart][nump] != -1)
+		  {
+		     GangZoneFlashForPlayer(playerid,zGangZones[zoneid][npart][nump],color);
+		  }
+		  if(zGangZones[zoneid][npart2][nump] != -1)
+		  {
+		     GangZoneFlashForPlayer(playerid,zGangZones[zoneid][npart2][nump],color);
+		  }
+	}
+    return 1;
+}
+
+// Make a number flash for player.
+stock ZoneNumberStopFlashForPlayer(playerid,zoneid)
+{
+    if(!zGangZones[zoneid][zExists])return 0;
+	if(!zGangZones[zoneid][zIsUsingNumbers])return 0;
+	
+	for(new nump; nump<5; nump++)
+	{
+	      if(zGangZones[zoneid][npart][nump] != -1)
+		  {
+		     GangZoneStopFlashForPlayer(playerid,zGangZones[zoneid][npart][nump]);
+		  }
+		  if(zGangZones[zoneid][npart2][nump] != -1)
+		  {
+		     GangZoneStopFlashForPlayer(playerid,zGangZones[zoneid][npart2][nump]);
+		  }
+	}
+    return 1;
+}
+
+// Make a number flash for all.
+stock ZoneNumberFlashForAll(zoneid,color)
+{
+    if(!zGangZones[zoneid][zExists])return 0;
+	if(!zGangZones[zoneid][zIsUsingNumbers])return 0;
+	
+	for(new nump; nump<5; nump++)
+	{
+	      if(zGangZones[zoneid][npart][nump] != -1)
+		  {
+		     GangZoneFlashForAll(zGangZones[zoneid][npart][nump],color);
+		  }
+		  if(zGangZones[zoneid][npart2][nump] != -1)
+		  {
+		     GangZoneFlashForAll(zGangZones[zoneid][npart2][nump],color);
+		  }
+	}
+    return 1;
+}
+
+// Make a number stop flash for all.
+stock ZoneNumberStopFlashForAll(zoneid)
+{
+    if(!zGangZones[zoneid][zExists])return 0;
+	if(!zGangZones[zoneid][zIsUsingNumbers])return 0;
+	
+	for(new nump; nump<5; nump++)
+	{
+	      if(zGangZones[zoneid][npart][nump] != -1)
+		  {
+		     GangZoneStopFlashForAll(zGangZones[zoneid][npart][nump]);
+		  }
+		  if(zGangZones[zoneid][npart2][nump] != -1)
+		  {
+		     GangZoneStopFlashForAll(zGangZones[zoneid][npart2][nump]);
+		  }
+	}
+    return 1;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Creates the first number.
 stock agz_GangZoneCreateFirstNumber(gzid,gznum,Float:centposx,Float:centposy,Float:numsize)
