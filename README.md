@@ -6,7 +6,6 @@ SA:MP Limit for gang zones is 1024. Numbers can take up to 10 gang zones to crea
 
 # Functions
 
-// To use GangZoneFlashForPlayer or GangZoneFlashForAll, you can get zone id of the actual gang zone with zGangZones[zoneid][zMainID]. (zoneid here is the id returned from CreateZone)<br>
 // Border and number colors can be easily changed by modifing the include.
 
 > CreateZone(Float:MinX, Float:MinY, Float:MaxX, Float:MaxY)
@@ -50,6 +49,35 @@ A gang zone must be shown again to players in order to display borders.<br>
 
 Destroys borders.<br>
 **Returns (0 - a gang zone does not exist or borders were not created before, 1 - successful)**
+
+
+> **Added in 2.1** HideZoneForPlayer(playerid,zoneid)
+
+> **Added in 2.1** HideZoneForAll(zoneid)
+
+> **Added in 2.1** ZoneFlashForPlayer(playerid,zoneid,color)
+
+> **Added in 2.1** ZoneStopFlashForPlayer(playerid,zoneid)
+
+> **Added in 2.1** ZoneFlashForAll(zoneid,color)
+
+> **Added in 2.1** ZoneStopFlashForAll(zoneid)
+
+> **Added in 2.1** ZoneBordersFlashForPlayer(playerid,zoneid,color)
+
+> **Added in 2.1** ZoneBordersStopFlashForPlayer(playerid,zoneid)
+
+> **Added in 2.1** ZoneBordersFlashForAll(zoneid,color)
+
+> **Added in 2.1** ZoneBordersStopFlashForAll(zoneid)
+
+> **Added in 2.1** ZoneNumberFlashForPlayer(playerid,zoneid,color)
+
+> **Added in 2.1** ZoneNumberStopFlashForPlayer(playerid,zoneid)
+
+> **Added in 2.1** ZoneNumberFlashForAll(zoneid,color)
+
+> **Added in 2.1** ZoneNumberStopFlashForAll(zoneid)
 
 
 # An example
