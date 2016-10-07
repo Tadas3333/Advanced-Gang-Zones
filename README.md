@@ -7,8 +7,6 @@ SA:MP Limit for gang zones is 1024. Numbers can take up to 10 gang zones to crea
 
 # Functions
 
-// Border and number colors can be easily changed by modifing the include.
-
 > CreateZone(Float:MinX, Float:MinY, Float:MaxX, Float:MaxY)
 
 Creates a gang zone.<br>
