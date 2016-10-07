@@ -51,33 +51,33 @@ Destroys borders.<br>
 **Returns (0 - a gang zone does not exist or borders were not created before, 1 - successful)**
 
 
-> **Added in 2.1** HideZoneForPlayer(playerid,zoneid)
+> **Added in 2.1** - HideZoneForPlayer(playerid,zoneid)
 
-> **Added in 2.1** HideZoneForAll(zoneid)
+> **Added in 2.1** - HideZoneForAll(zoneid)
 
-> **Added in 2.1** ZoneFlashForPlayer(playerid,zoneid,color)
+> **Added in 2.1** - ZoneFlashForPlayer(playerid,zoneid,color)
 
-> **Added in 2.1** ZoneStopFlashForPlayer(playerid,zoneid)
+> **Added in 2.1** - ZoneStopFlashForPlayer(playerid,zoneid)
 
-> **Added in 2.1** ZoneFlashForAll(zoneid,color)
+> **Added in 2.1** - ZoneFlashForAll(zoneid,color)
 
-> **Added in 2.1** ZoneStopFlashForAll(zoneid)
+> **Added in 2.1** - ZoneStopFlashForAll(zoneid)
 
-> **Added in 2.1** ZoneBordersFlashForPlayer(playerid,zoneid,color)
+> **Added in 2.1** - ZoneBordersFlashForPlayer(playerid,zoneid,color)
 
-> **Added in 2.1** ZoneBordersStopFlashForPlayer(playerid,zoneid)
+> **Added in 2.1** - ZoneBordersStopFlashForPlayer(playerid,zoneid)
 
-> **Added in 2.1** ZoneBordersFlashForAll(zoneid,color)
+> **Added in 2.1** - ZoneBordersFlashForAll(zoneid,color)
 
-> **Added in 2.1** ZoneBordersStopFlashForAll(zoneid)
+> **Added in 2.1** - ZoneBordersStopFlashForAll(zoneid)
 
-> **Added in 2.1** ZoneNumberFlashForPlayer(playerid,zoneid,color)
+> **Added in 2.1** - ZoneNumberFlashForPlayer(playerid,zoneid,color)
 
-> **Added in 2.1** ZoneNumberStopFlashForPlayer(playerid,zoneid)
+> **Added in 2.1** - ZoneNumberStopFlashForPlayer(playerid,zoneid)
 
-> **Added in 2.1** ZoneNumberFlashForAll(zoneid,color)
+> **Added in 2.1** - ZoneNumberFlashForAll(zoneid,color)
 
-> **Added in 2.1** ZoneNumberStopFlashForAll(zoneid)
+> **Added in 2.1** - ZoneNumberStopFlashForAll(zoneid)
 
 
 # An example
