@@ -1,7 +1,7 @@
 # Advanced-Gang-Zones
 Draw numbers and borders on the map. This is an updated version of my old project beaZone.inc<br>
-SA:MP Forum Topic Link: http://forum.sa-mp.com/showthread.php?t=618475 (Does not work.)
-Portal SA:MP (pt-BR) Link: https://portalsamp.com/showthread.php?tid=3469
+SA:MP Forum Topic Link: http://forum.sa-mp.com/showthread.php?t=618475 (Does not work.)<br>
+Portal SA:MP (pt-BR) Link: https://portalsamp.com/showthread.php?tid=3469<br>
 Open.MP Link: https://forum.open.mp/showthread.php?tid=2374
 
 
