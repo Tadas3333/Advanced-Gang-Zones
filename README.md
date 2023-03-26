@@ -1,9 +1,17 @@
 # Advanced-Gang-Zones
 Draw numbers and borders on the map. This is an updated version of my old project beaZone.inc<br>
-SA:MP Forum Topic Link: http://forum.sa-mp.com/showthread.php?t=618475
+SA:MP Forum Topic Link: http://forum.sa-mp.com/showthread.php?t=618475 (Does not work.)
+Portal SA:MP (pt-BR) Link: https://portalsamp.com/showthread.php?tid=3469
+Open.MP Link: https://forum.open.mp/showthread.php?tid=2374
+
 
 # Limitations
 SA:MP Limit for gang zones is 1024. Numbers can take up to 10 gang zones to create and 4 for borders.<br>
+
+# Update - 25/03/2023 (pushline)
+Now that i updated the include, take notes that the gangzones, can go up to higher numbers than 99 and equal less than 999.
+<br>
+The number creation is one of the hards/ugly parts that i've had to seen in the include. So if u have a better idea, please, fork this project and do a pull request.
 
 # Functions
 
