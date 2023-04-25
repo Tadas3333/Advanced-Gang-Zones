@@ -327,7 +327,7 @@ stock CreateZoneNumber(zoneid,gznumber,Float:numsize = 0.7)
 	}
 	else if(gznumber > 99 && gznumber <= 999)
 	{
-		new temp[3],gznum1[2],gznum2[2], gznum3[3];
+		new temp[4],gznum1[2],gznum2[2], gznum3[3];
 
 	   	format(temp,sizeof temp,"%d",gznumber);
 	   	strmid(gznum1,temp,0,1);
