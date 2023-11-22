@@ -1,18 +1,22 @@
 /*
-        *****************
-        Advanced Gang Zones v2.2.1
-        by beijind.
-		updated by pushline
-		
-		Added: Third number
-		Fixed: MinY > MaxY to MaxY > MinY
-        *****************
+    *****************
+    Advanced Gang Zones v2.2.1
+    by beijind.
+    updated by pushline
+
+    Added: Third number
+    Fixed: MinY > MaxY to MaxY > MinY
+    *****************
 */
 
-#include <open.mp>
+#tryinclude <open.mp>
+
+#if !defined _INC_open_mp
+	#include <a_samp>
+#endif
 
 #define NUMDIS 25.0 // number distance
-#define LETTER_STROKE 3.5 
+#define LETTER_STROKE 3.5
 #define LETTER_XSQUASH 0.7
 #define BORDER_SIZE 1.5
 #define ZCOLOR_NUMBER 0x050505AA
@@ -106,7 +110,7 @@ stock ShowZoneForAll(zoneid,color,ncolor = ZCOLOR_NUMBER,bcolor = ZCOLOR_BORDER)
 stock ShowZoneForPlayer(playerid,zoneid,color,ncolor = ZCOLOR_NUMBER,bcolor = ZCOLOR_BORDER)
 {
 	if(!zGangZones[zoneid][zExists])return 0;
-		
+
 	//
 	GangZoneShowForPlayer(playerid,zGangZones[zoneid][zMainID],color);
 
@@ -190,7 +194,7 @@ stock HideZoneForAll(zoneid)
 stock HideZoneForPlayer(playerid,zoneid)
 {
 	if(!zGangZones[zoneid][zExists])return 0;
-		
+
 	//
 	GangZoneHideForPlayer(playerid,zGangZones[zoneid][zMainID]);
 
@@ -248,10 +252,10 @@ stock CreateZone(Float:gzMinX, Float:gzMinY, Float:gzMaxX, Float:gzMaxY)
 stock DestroyZone(zoneid)
 {
     if(!zGangZones[zoneid][zExists])return 0;
-    
+
     //
     GangZoneDestroy(zGangZones[zoneid][zMainID]);
-    
+
     //
     if(zGangZones[zoneid][zIsUsingNumbers])
     {
@@ -298,12 +302,12 @@ stock CreateZoneNumber(zoneid,gznumber,Float:numsize = 0.7)
 	if(!zGangZones[zoneid][zExists])return 0;
 	if(zGangZones[zoneid][zIsUsingNumbers])return 0;
 	if(numsize <= 0.0)return 0;
-	
+
 	//
 	new Float:centposx,Float:centposy;
 	centposx = (zGangZones[zoneid][zPosCords][0]+zGangZones[zoneid][zPosCords][2]) / 2;
 	centposy = (zGangZones[zoneid][zPosCords][1]+zGangZones[zoneid][zPosCords][3]) / 2;
-	
+
 	//
 	if(gznumber >= 0 && gznumber <= 9)
 	{
@@ -335,7 +339,7 @@ stock CreateZoneNumber(zoneid,gznumber,Float:numsize = 0.7)
 	   	strmid(gznum3,temp,2,3);
 
 		// NUMDIS has math involved in this part because it gets too close each number.
-	   	agz_GangZoneCreateFirstNumber(zoneid,strval(gznum1),centposx-((NUMDIS-8)*numsize),centposy,numsize); 
+	   	agz_GangZoneCreateFirstNumber(zoneid,strval(gznum1),centposx-((NUMDIS-8)*numsize),centposy,numsize);
 	   	agz_GangZoneCreateSecondNumber(zoneid,strval(gznum2),centposx+((NUMDIS-8)*numsize),centposy,numsize);
 	   	agz_GangZoneCreateThirdNumber(zoneid,strval(gznum3),centposx+((NUMDIS + 35)*numsize),centposy,numsize);
 	   	zGangZones[zoneid][zIsUsingNumbers] = true;
@@ -350,7 +354,7 @@ stock DestroyZoneNumber(zoneid)
 {
 	if(!zGangZones[zoneid][zExists])return 0;
 	if(!zGangZones[zoneid][zIsUsingNumbers])return 0;
-	
+
     for(new numpart;numpart < 5;numpart++)
 	{
 	   if(zGangZones[zoneid][npart][numpart] != -1)
@@ -371,7 +375,7 @@ stock DestroyZoneNumber(zoneid)
 	      zGangZones[zoneid][npart3][numpart] = -1;
 	   }
 	}
-	
+
 	zGangZones[zoneid][zIsUsingNumbers] = false;
 	return 1;
 }
@@ -416,7 +420,7 @@ stock DestroyZoneBorders(zoneid)
 stock ZoneFlashForPlayer(playerid,zoneid,color)
 {
     if(!zGangZones[zoneid][zExists])return 0;
-	
+
 	GangZoneFlashForPlayer(playerid,zGangZones[zoneid][zMainID],color);
     return 1;
 }
@@ -425,7 +429,7 @@ stock ZoneFlashForPlayer(playerid,zoneid,color)
 stock ZoneStopFlashForPlayer(playerid,zoneid)
 {
     if(!zGangZones[zoneid][zExists])return 0;
-	
+
 	GangZoneStopFlashForPlayer(playerid,zGangZones[zoneid][zMainID]);
     return 1;
 }
@@ -434,7 +438,7 @@ stock ZoneStopFlashForPlayer(playerid,zoneid)
 stock ZoneFlashForAll(zoneid,color)
 {
     if(!zGangZones[zoneid][zExists])return 0;
-	
+
 	GangZoneFlashForAll(zGangZones[zoneid][zMainID],color);
     return 1;
 }
@@ -443,7 +447,7 @@ stock ZoneFlashForAll(zoneid,color)
 stock ZoneStopFlashForAll(zoneid)
 {
     if(!zGangZones[zoneid][zExists])return 0;
-	
+
 	GangZoneStopFlashForAll(zGangZones[zoneid][zMainID]);
     return 1;
 }
@@ -455,7 +459,7 @@ stock ZoneBordersFlashForPlayer(playerid,zoneid,color)
 {
     if(!zGangZones[zoneid][zExists])return 0;
 	if(!zGangZones[zoneid][zIsUsingBorders])return 0;
-	
+
 	GangZoneFlashForPlayer(playerid,zGangZones[zoneid][border][0],color);
 	GangZoneFlashForPlayer(playerid,zGangZones[zoneid][border][1],color);
     GangZoneFlashForPlayer(playerid,zGangZones[zoneid][border][2],color);
@@ -469,7 +473,7 @@ stock ZoneBordersStopFlashForPlayer(playerid,zoneid)
 {
     if(!zGangZones[zoneid][zExists])return 0;
 	if(!zGangZones[zoneid][zIsUsingBorders])return 0;
-	
+
 	GangZoneStopFlashForPlayer(playerid,zGangZones[zoneid][border][0]);
 	GangZoneStopFlashForPlayer(playerid,zGangZones[zoneid][border][1]);
     GangZoneStopFlashForPlayer(playerid,zGangZones[zoneid][border][2]);
@@ -483,7 +487,7 @@ stock ZoneBordersFlashForAll(zoneid,color)
 {
     if(!zGangZones[zoneid][zExists])return 0;
 	if(!zGangZones[zoneid][zIsUsingBorders])return 0;
-	
+
 	GangZoneFlashForAll(zGangZones[zoneid][border][0],color);
 	GangZoneFlashForAll(zGangZones[zoneid][border][1],color);
     GangZoneFlashForAll(zGangZones[zoneid][border][2],color);
@@ -497,7 +501,7 @@ stock ZoneBordersStopFlashForAll(zoneid)
 {
     if(!zGangZones[zoneid][zExists])return 0;
 	if(!zGangZones[zoneid][zIsUsingBorders])return 0;
-	
+
 	GangZoneStopFlashForAll(zGangZones[zoneid][border][0]);
 	GangZoneStopFlashForAll(zGangZones[zoneid][border][1]);
     GangZoneStopFlashForAll(zGangZones[zoneid][border][2]);
@@ -513,7 +517,7 @@ stock ZoneNumberFlashForPlayer(playerid,zoneid,color)
 {
     if(!zGangZones[zoneid][zExists])return 0;
 	if(!zGangZones[zoneid][zIsUsingNumbers])return 0;
-	
+
 	for(new nump; nump<5; nump++)
 	{
 	      if(zGangZones[zoneid][npart][nump] != -1)
@@ -539,7 +543,7 @@ stock ZoneNumberStopFlashForPlayer(playerid,zoneid)
 {
     if(!zGangZones[zoneid][zExists])return 0;
 	if(!zGangZones[zoneid][zIsUsingNumbers])return 0;
-	
+
 	for(new nump; nump<5; nump++)
 	{
 	      if(zGangZones[zoneid][npart][nump] != -1)
@@ -565,7 +569,7 @@ stock ZoneNumberFlashForAll(zoneid,color)
 {
     if(!zGangZones[zoneid][zExists])return 0;
 	if(!zGangZones[zoneid][zIsUsingNumbers])return 0;
-	
+
 	for(new nump; nump<5; nump++)
 	{
 	      if(zGangZones[zoneid][npart][nump] != -1)
@@ -591,7 +595,7 @@ stock ZoneNumberStopFlashForAll(zoneid)
 {
     if(!zGangZones[zoneid][zExists])return 0;
 	if(!zGangZones[zoneid][zIsUsingNumbers])return 0;
-	
+
 	for(new nump; nump<5; nump++)
 	{
 	      if(zGangZones[zoneid][npart][nump] != -1)
@@ -700,7 +704,7 @@ stock agz_GangZoneCreateFirstNumber(gzid,gznum,Float:centposx,Float:centposy,Flo
 		new Float:gztk = LETTER_STROKE*numsize;
 		new Float:gsdisy = 20.0*numsize;
 		new Float:gsdisx = 15.0*numsize*LETTER_XSQUASH;
-		
+
 		zGangZones[gzid][npart][0] = GangZoneCreate(centposx+gsdisx-gztk,centposy-gsdisy-gztk,centposx+gsdisx+gztk,centposy+gsdisy-gztk); // Stick of 7
 		zGangZones[gzid][npart][1] = GangZoneCreate(centposx-gsdisx-gsdisx,centposy+gsdisy-gztk,centposx+gsdisx+gztk,centposy+gsdisy+gztk); // Up of 7
 	  }
@@ -721,7 +725,7 @@ stock agz_GangZoneCreateFirstNumber(gzid,gznum,Float:centposx,Float:centposy,Flo
   		new Float:gztk = LETTER_STROKE*numsize;
 		new Float:gsdisy = 20.0*numsize;
 		new Float:gsdisx = 25.0*numsize*LETTER_XSQUASH;
-		
+
 		zGangZones[gzid][npart][0] = GangZoneCreate(centposx-gsdisx-gztk,centposy,centposx-gsdisx+gztk,centposy+gsdisy-gztk); // Left Stick
 		zGangZones[gzid][npart][1] = GangZoneCreate(centposx+gsdisx,centposy-gsdisy-gztk,centposx+gsdisx+gztk+gztk,centposy+gsdisy+gztk); // Right Stick
 		zGangZones[gzid][npart][2] = GangZoneCreate(centposx-gsdisx-gztk,centposy+gsdisy-gztk,centposx+gsdisx,centposy+gsdisy+gztk); // Up
@@ -804,7 +808,7 @@ stock agz_GangZoneCreateSecondNumber(gzid,gznum,Float:centposx,Float:centposy,Fl
   		new Float:gztk = LETTER_STROKE*numsize;
 		new Float:gsdisy = 20.0*numsize;
 		new Float:gsdisx = 25.0*numsize*LETTER_XSQUASH;
-		
+
 		zGangZones[gzid][npart2][0] = GangZoneCreate(centposx-gsdisx,centposy+gsdisy-gztk,centposx+gsdisx,centposy+gsdisy+gztk); // Up
 		zGangZones[gzid][npart2][1] = GangZoneCreate(centposx-gsdisx-gztk-gztk,centposy-gsdisy-gztk,centposx-gsdisx,centposy+gsdisy+gztk); // Main Left Stick
 		zGangZones[gzid][npart2][2] = GangZoneCreate(centposx-gsdisx,centposy-gztk,centposx+gsdisx,centposy+gztk); // Middle
@@ -942,7 +946,7 @@ stock agz_GangZoneCreateThirdNumber(gzid,gznum,Float:centposx,Float:centposy,Flo
   		new Float:gztk = LETTER_STROKE*numsize;
 		new Float:gsdisy = 20.0*numsize;
 		new Float:gsdisx = 25.0*numsize*LETTER_XSQUASH;
-		
+
 		zGangZones[gzid][npart3][0] = GangZoneCreate(centposx-gsdisx-gztk,centposy-gsdisy-gztk,centposx-gsdisx+gztk,centposy+gsdisy+gztk); // Left stick
 		zGangZones[gzid][npart3][1] = GangZoneCreate(centposx+gsdisx-gztk,centposy-gsdisy-gztk,centposx+gsdisx+gztk,centposy+gsdisy+gztk); // Right stick
 		zGangZones[gzid][npart3][2] = GangZoneCreate(centposx-gsdisx+gztk,centposy+gsdisy-gztk,centposx+gsdisx-gztk,centposy+gsdisy+gztk); // Up
@@ -954,7 +958,7 @@ stock agz_GangZoneCreateThirdNumber(gzid,gznum,Float:centposx,Float:centposy,Flo
   		new Float:gztk = LETTER_STROKE*numsize;
 		new Float:gsdisy = 20.0*numsize;
 		new Float:gsdisx = 25.0*numsize*LETTER_XSQUASH;
-		
+
 		zGangZones[gzid][npart3][0] = GangZoneCreate(centposx-gsdisx-gztk,centposy,centposx-gsdisx+gztk,centposy+gsdisy-gztk); // Left Stick
 		zGangZones[gzid][npart3][1] = GangZoneCreate(centposx+gsdisx,centposy-gsdisy-gztk,centposx+gsdisx+gztk+gztk,centposy+gsdisy+gztk); // Right Stick
 		zGangZones[gzid][npart3][2] = GangZoneCreate(centposx-gsdisx-gztk,centposy+gsdisy-gztk,centposx+gsdisx,centposy+gsdisy+gztk); // Up
