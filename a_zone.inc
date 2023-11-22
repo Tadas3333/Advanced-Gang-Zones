@@ -42,7 +42,7 @@ new zGangZonesCreated;
 public OnGameModeInit()
 {
     zGangZonesCreated = 0;
-    for(new z=0; z<sizeof(zGangZones); z++)
+    for(new z=0; z < sizeof(zGangZones); z++)
 	{
 	   zGangZones[z][zExists] = false;
 	   zGangZones[z][zIsUsingNumbers] = false;
